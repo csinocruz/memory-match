@@ -4,6 +4,13 @@
     font-size: 115%;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 body {
     background-size: cover;
     height: 100vh;
@@ -19,7 +26,7 @@ body {
 
 header, .game-area, .stats-container {
     border-radius: 7px; 
-    background-color: rgba(0, 0, 0, 0.38);
+    background-color: rgba(0, 0, 0, 0.41);
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -37,7 +44,19 @@ header {
 }
 
 .stats-container {
-    height: 13vh;
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.games-played, 
+.attempts, 
+.accuracy {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 button {
