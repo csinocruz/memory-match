@@ -1,4 +1,8 @@
-
+* {
+    font-family: 'Orbitron', sans-serif;
+    color: yellowgreen;
+    opacity: 1;
+}
 
 body {
     background-size: cover;
@@ -17,14 +21,15 @@ header, .game-area, .stats-container {
     margin-bottom: 20px;
     width: 80vw;
     font-family: 'Orbitron', sans-serif;
+    padding: 25px;
 }
 
 header {
-    height: 20vh;
+    height: 15vh;
 }
 
 .game-area {
-    height: 50vh;
+    height: 40vh;
 }
 
 .stats-container {
