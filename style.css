@@ -1,7 +1,6 @@
 * {
     font-family: 'Orbitron', sans-serif;
     color: yellowgreen;
-    opacity: 1;
     font-size: 115%;
 }
 
@@ -13,10 +12,14 @@ body {
     background-attachment: fixed;
 }
 
+#logo {
+    max-width:100%;
+    max-height:100%;
+}
+
 header, .game-area, .stats-container {
     border-radius: 7px; 
-    background-color: black;
-    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.38);
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -35,4 +38,23 @@ header {
 
 .stats-container {
     height: 13vh;
+}
+
+button {
+    background-color: yellowgreen; 
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #d4fb09;
+    color: black;
 }
