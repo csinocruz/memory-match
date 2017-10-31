@@ -6,43 +6,27 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
-    /* display: flex;
-    justify-content: space-around;
-    align-content: center; */
+}
+
+header, .game-area, .stats-container {
+    border-radius: 7px; 
+    background-color: black;
+    opacity: 0.5;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 80vw;
+    font-family: 'Orbitron', sans-serif;
 }
 
 header {
-    border-radius: 7px; 
-    background-color: black;
-    opacity: 0.5;
     height: 20vh;
-    width: 80vw;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-family: 'Orbitron', sans-serif;
 }
 
 .game-area {
-    border-radius: 7px; 
-    background-color: black;
-    opacity: 0.5;
     height: 50vh;
-    width: 80vw;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-family: 'Orbitron', sans-serif;
 }
 
 .stats-container {
-    border-radius: 7px; 
-    background-color: black;
-    opacity: 0.5;
     height: 13vh;
-    width: 80vw;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-family: 'Orbitron', sans-serif;
 }
