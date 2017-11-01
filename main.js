@@ -1,7 +1,6 @@
 $(document).ready(function() {
     console.log('document loaded'),
     setBackground()
-    // playMusic()
 });
 
 var background_images = [
@@ -23,18 +22,6 @@ var background_images = [
     '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/watchpoint_gibraltar.jpg'
 ]
 
-// var theme_music = new Audio(
-//     '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/637.mp3',
-//     '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/1211.mp3',
-//     '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/4732.mp3'
-// );
-
-// function playMusic() {
-//     console.log('playMusic function called');
-//     theme_music.loop = true;
-//     theme_music.play();
-// }
-
 var audio = new Audio(),
 i = 0;
 var playlist = new Array(
@@ -43,6 +30,8 @@ var playlist = new Array(
     '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/4732.mp3'
 );
 
+//Code regarding audio is copied and pasted,
+//I do not know how the code is working. Will inquire...
 audio.addEventListener('ended', function () {
 i = ++i < playlist.length ? i : 0;
 console.log(i)

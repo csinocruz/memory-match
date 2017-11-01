@@ -1,7 +1,7 @@
 * {
     font-family: 'Orbitron', sans-serif;
     color: yellowgreen;
-    font-size: 115%;
+    font-size: 3.3vmin;
 }
 
 input:focus,
@@ -22,9 +22,10 @@ body {
 #logo {
     max-width:100%;
     max-height:100%;
+    padding-right: 55px;
 }
 
-header, .game-area, .stats-container {
+header, #game-area, .stats-container {
     border-radius: 7px; 
     background-color: rgba(0, 0, 0, 0.41);
     margin: auto;
@@ -36,18 +37,32 @@ header, .game-area, .stats-container {
 }
 
 header {
+    display: flex;
     height: 15vh;
 }
 
-.game-area {
+h1 {
+    align-self: center;
+}
+
+#game-area {
     height: 40vh;
+}
+
+.card {
+    border-radius: 5px;
+    height: 14vh;
+    width: 6vw;
+    background-color: blue;
 }
 
 .stats-container {
     display: flex;
-    /* flex-direction: row; */
-    flex-wrap: nowrap;
     justify-content: space-around;
+}
+
+.label, .value {
+    margin: 5px;
 }
 
 .games-played, 
