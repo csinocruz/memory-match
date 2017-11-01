@@ -3,6 +3,10 @@ $(document).ready(function() {
     setBackground()
 });
 
+function initializeApp() {
+    
+}
+
 var background_images = [
     '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/dorado.jpg',
     '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/eichenwalde.jpg',
@@ -48,3 +52,4 @@ function setBackground() {
     var randomImgNum = Math.floor(Math.random()*16);
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
+
