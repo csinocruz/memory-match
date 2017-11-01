@@ -8,30 +8,30 @@ function initializeApp() {
 }
 
 var background_images = [
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/dorado.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/eichenwalde.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/hanamura.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/hollywood.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/horizon_lunar_colony.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/ilios.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/junkertown.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/kings_row.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/lijiang_tower.jpeg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/nepal.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/numbani.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/oasis.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/route_66.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/temple_of_anubis.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/volskaya_industries.jpg',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/images/Maps/watchpoint_gibraltar.jpg'
+    'images/Maps/dorado.jpg',
+    'images/Maps/eichenwalde.jpg',
+    'images/Maps/hanamura.jpg',
+    'images/Maps/hollywood.jpg',
+    'images/Maps/horizon_lunar_colony.jpg',
+    'images/Maps/ilios.jpg',
+    'images/Maps/junkertown.jpg',
+    'images/Maps/kings_row.jpg',
+    'images/Maps/lijiang_tower.jpeg',
+    'images/Maps/nepal.jpg',
+    'images/Maps/numbani.jpg',
+    'images/Maps/oasis.jpg',
+    'images/Maps/route_66.jpg',
+    'images/Maps/temple_of_anubis.jpg',
+    'images/Maps/volskaya_industries.jpg',
+    'images/Maps/watchpoint_gibraltar.jpg'
 ]
 
 var audio = new Audio(),
 i = 0;
 var playlist = new Array(
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/637.mp3', 
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/1211.mp3',
-    '/Users/francescasinocruz/Desktop/LFZ/memory_match/music/4732.mp3'
+    'music/637.mp3', 
+    'music/1211.mp3',
+    'music/4732.mp3'
 );
 
 //Code regarding audio is copied and pasted,
@@ -53,3 +53,6 @@ function setBackground() {
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
 
+function createCards() {
+    $('div')
+}
