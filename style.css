@@ -72,6 +72,12 @@ h1 {
     border-radius: 5px; 
 }
 
+.back {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .stats-container {
     display: flex;
     justify-content: space-around;
