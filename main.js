@@ -1,11 +1,8 @@
 $(document).ready(function() {
     console.log('document loaded'),
-    setBackground()
+    setBackground(),
+    initializeApp()
 });
-
-function initializeApp() {
-    
-}
 
 var background_images = [
     'images/Maps/dorado.jpg',
@@ -34,6 +31,9 @@ var playlist = new Array(
     'music/4732.mp3'
 );
 
+var first_card_clicked = null;
+var second_card_clicked = null;
+
 //Code regarding audio is copied and pasted,
 //I do not know how the code is working. Will inquire...
 audio.addEventListener('ended', function () {
@@ -53,9 +53,30 @@ function setBackground() {
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
 
-function createCards() {
-    $('div')
+
+
+function initializeApp() {
+    console.log('function initializeApp called');
+    $('.card').click(clickHandler);
 }
+
+function clickHandler() {
+    console.log('function clickHandler called');
+    $(this).toggleClass('reveal');
+    if(first_card_clicked === null) {
+        $(this) = first_card_clicked; 
+    } else {
+        $(this) = second_card_clicked;
+    }
+
+    if(first_card_clicked === second_card_clicked) {
+        console.log('The cards are a match!');
+    } else {
+        console.log('The cards DO NOT match');
+
+    }
+}
+
 
 var characters = [
     {
