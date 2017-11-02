@@ -48,7 +48,7 @@ audio.src = playlist[0];
 audio.play();
 
 function setBackground() {
-    console.log('function setBackground is being called');
+    console.log('function setBackground called');
     var randomImgNum = Math.floor(Math.random()*16);
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
