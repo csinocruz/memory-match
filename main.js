@@ -69,7 +69,7 @@ var characters = [
         baseOfOperations: 'Cairo, Egypt',
         affiliation: 'Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/ana.png'
     },
     {
         gameName: 'Bastion',
@@ -82,7 +82,7 @@ var characters = [
         baseOfOperations: 'Unknown',
         affiliation: 'None',
         sound: '',
-        photo: ''
+        photo: 'characters/bastion.png'
     },
     {
         gameName: 'Doomfist',
@@ -95,7 +95,7 @@ var characters = [
         baseOfOperations: 'Oyo, Nigeria',
         affiliation: 'Talon',
         sound: '',
-        photo: ''
+        photo: 'characters/doomfist.png'
     },
     {
         gameName: 'D.Va',
@@ -108,7 +108,7 @@ var characters = [
         baseOfOperations: 'Busan, South Korea',
         affiliation: 'Mobile Exo-Force of the Korean Army',
         sound: '',
-        photo: ''
+        photo: 'characters/dva.png'
     },
     {
         gameName: 'Genji',
@@ -121,7 +121,7 @@ var characters = [
         baseOfOperations: 'Shambali Monastery, Nepal',
         affiliation: 'Shimada Clan (formerly), Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/genji.png'
     },
     {
         gameName: 'Hanzo',
@@ -134,7 +134,7 @@ var characters = [
         baseOfOperations: 'Hanamura, Japan (formerly)',
         affiliation: 'Shimada Clan',
         sound: '',
-        photo: ''
+        photo: 'characters/hanzo.png'
     },
     {
         gameName: 'Junkrat',
@@ -147,7 +147,7 @@ var characters = [
         baseOfOperations: 'Junkertown, Australia (formerly)',
         affiliation: 'Junkers (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/junkrat.png'
     },
     {
         gameName: 'Lucio',
@@ -160,7 +160,7 @@ var characters = [
         baseOfOperations: 'Rio de Janeiro, Brazil',
         affiliation: 'None',
         sound: '',
-        photo: ''
+        photo: 'characters/lucio.png'
     },
     {
         gameName: 'McCree',
@@ -173,7 +173,7 @@ var characters = [
         baseOfOperations: 'Santa Fe, New Mexico, USA',
         affiliation: 'Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/mccree.png'
     },
     {
         gameName: 'Mei',
@@ -186,84 +186,201 @@ var characters = [
         baseOfOperations: 'Xi’an, China (formerly)',
         affiliation: 'Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/mei.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Mercy',
+        fullName: 'Angela Ziegler',
+        role: 'Support',
+        difficulty: 1,
+        abilities: ['Caduceus Staff', 'Caduceus Blaster', 'Guardian Angel', 'Angelic Descent', 'Resurrect'],
+        age: 37,
+        occupation: 'Field Medic, First Responder',
+        baseOfOperations: 'Zürich, Switzerland',
+        affiliation: 'Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/mercy.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Orisa',
+        fullName: 'Orisa',
+        role: 'Tank',
+        difficulty: 2,
+        abilities: ['Fusion Driver', 'Fortify', 'Halt!', 'Protective Barrier', 'Supercharger'],
+        age: 0,
+        occupation: 'Guardian Robot',
+        baseOfOperations: 'Numbani',
+        affiliation: 'None',
         sound: '',
-        photo: ''
+        photo: 'characters/orisa.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Pharah',
+        fullName: 'Fareeha Amari',
+        role: 'Offense',
+        difficulty: 1,
+        abilities: ['Rocket Launcher', 'Jump Set', 'Concussive Blast', 'Barrage'],
+        age: 32,
+        occupation: 'Security Chief',
+        baseOfOperations: 'Giza, Egypt',
+        affiliation: 'Helix Security International',
         sound: '',
-        photo: ''
+        photo: 'characters/pharah.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Reaper',
+        fullName: 'Unknown',
+        role: 'Offense',
+        difficulty: 1,
+        abilities: ['Hellfire Shotguns', 'Wraith Form', 'Shadow Step', 'Death Blossom'],
+        age: 0,
+        occupation: 'Mercenary',
+        baseOfOperations: 'Unknown',
+        affiliation: 'Unknown',
         sound: '',
-        photo: ''
+        photo: 'characters/reaper.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Reinhardt',
+        fullName: 'Reinhardt Wilhelm',
+        role: 'Tank',
+        difficulty: 1,
+        abilities: ['Rocket Hammer', 'Barrier Field', 'Charge', 'Fire Strike', 'Earthshatter'],
+        age: 61,
+        occupation: 'Adventurer',
+        baseOfOperations: 'Stuttgart, Germany',
+        affiliation: 'Overwatch (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/reinhardt.png'
     },
     {
-        gameName: '',
-        fullName: '',
-        role: '',
-        difficulty: 3,
-        abilities: ['', '', '', ''],
-        age: ,
-        occupation: '',
-        baseOfOperations: '',
-        affiliation: '',
+        gameName: 'Roadhog',
+        fullName: 'Mako Rutledge',
+        role: 'Tank',
+        difficulty: 1,
+        abilities: ['Scrap Gun', 'Take a Breather', 'Chain Hook', 'Whole Hog'],
+        age: 48,
+        occupation: 'Enforcer (formerly), Bodyguard',
+        baseOfOperations: 'Junkertown, Australia (formerly)',
+        affiliation: 'Junkers (formerly)',
         sound: '',
-        photo: ''
+        photo: 'characters/roadhog.png'
     },
+    {
+        gameName: 'Soldier 76',
+        fullName: 'Unknown',
+        role: 'Offense',
+        difficulty: 1,
+        abilities: ['Heavy Pulse Rifle', 'Helix Rockets', 'Sprint', 'Biotic Field', 'Tactical Visor'],
+        age: 0,
+        occupation: 'Vigilante',
+        baseOfOperations: 'Unknown',
+        affiliation: 'Overwatch (formerly)',
+        sound: '',
+        photo: 'characters/soldier76.png'
+    },
+    {
+        gameName: 'Sombra',
+        fullName: 'Olivia Colomar',
+        role: 'Offense',
+        difficulty: 0,
+        abilities: ['Opportunist', 'Machine Pistol', 'Hack', 'Thermoptic Camo', 'Translocator', 'EMP'],
+        age: 30,
+        occupation: 'Hacker',
+        baseOfOperations: 'Dorado, Mexico',
+        affiliation: 'Los Muertos (formerly)',
+        sound: '',
+        photo: 'characters/sombra.png'
+    },
+    {
+        gameName: 'Symmetra',
+        fullName: 'Satya Vaswani',
+        role: 'Support',
+        difficulty: 2,
+        abilities: ['Photon Projector', 'Sentry Turret', 'Photon Barrier', 'Teleporter', 'Shield Generator'],
+        age: 28,
+        occupation: 'Architech',
+        baseOfOperations: 'Utopaea, India',
+        affiliation: 'Vishkar Corporation',
+        sound: '',
+        photo: 'characters/symmetra.png'
+    },
+    {
+        gameName: 'Torbjörn',
+        fullName: 'Torbjörn Lindholm',
+        role: 'Defense',
+        difficulty: 2,
+        abilities: ['Rivet Gun', 'Forge Hammer', 'Build Turret', 'Armor Pack', 'Molten Core'],
+        age: 57,
+        occupation: 'Weapons Designer',
+        baseOfOperations: 'Gothenburg, Sweden',
+        affiliation: 'Overwatch (formerly)',
+        sound: '',
+        photo: 'characters/torbjorn.png'
+    },
+    {
+        gameName: 'Tracer',
+        fullName: 'Lena Oxton',
+        role: 'Offense',
+        difficulty: 2,
+        abilities: ['Pulse Pistols', 'Blink', 'Recall', 'Pulse Bomb'],
+        age: 26,
+        occupation: 'Adventurer',
+        baseOfOperations: 'London, England',
+        affiliation: 'Overwatch (formerly)',
+        sound: '',
+        photo: 'characters/tracer.png'
+    },
+    {
+        gameName: 'Widowmaker',
+        fullName: 'Amélie Lacroix',
+        role: 'Defense',
+        difficulty: 3,
+        abilities: ['Widow\'s Kiss', 'Grappling Hook', 'Venom Mine', 'Infra-sight'],
+        age: 33,
+        occupation: 'Assassin',
+        baseOfOperations: 'Annecy, France',
+        affiliation: 'Talon',
+        sound: '',
+        photo: 'characters/widowmaker.png'
+    },
+    {
+        gameName: 'Winston',
+        fullName: 'Winston',
+        role: 'Tank',
+        difficulty: 2,
+        abilities: ['Tesla Cannon', 'Jump Pack', 'Barrier Projector', 'Primal Rage'],
+        age: 29,
+        occupation: 'Scientist, Adventurer',
+        baseOfOperations: 'Horizon Lunar Colony (formerly)',
+        affiliation: 'Overwatch (formerly)',
+        sound: '',
+        photo: 'characters/winston.png'
+    },
+    {
+        gameName: 'Zarya',
+        fullName: 'Aleksandra Zaryanova',
+        role: 'Tank',
+        difficulty: 3,
+        abilities: ['Particle Cannon', 'Particle Barrier', 'Projected Barrier', 'Gravitation Surge'],
+        age: 28,
+        occupation: 'Soldier',
+        baseOfOperations: 'Krasnoyarsk Front, Russia',
+        affiliation: 'Russian Defense Forces',
+        sound: '',
+        photo: 'characters/zarya.png'
+    },
+    {
+        gameName: 'Zenyatta',
+        fullName: 'Tekhartha Zenyatta',
+        role: 'Support',
+        difficulty: 3,
+        abilities: ['Orb of Destruction', 'Orb of Harmony', 'Orb of Discord', 'Transcendence'],
+        age: 20,
+        occupation: 'Wandering Guru, Adventurer',
+        baseOfOperations: 'Shambali Monastery, Nepal (formerly)',
+        affiliation: 'The Shambali (formerly)',
+        sound: '',
+        photo: 'characters/zenyatta.png'
+    }
 ]
