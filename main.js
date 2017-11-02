@@ -60,42 +60,60 @@ function initializeApp() {
 }
 
 function createCards() {
-    for (var i=0; i<characters.length; i++) {
+    for (var i=0; i<19; i++) {
+        //create card divs
         var card_div = $('<div>').addClass('card');
         var front_div = $('<div>').addClass('front');
         var back_div = $('<div>').addClass('back');
-
+        //add images to card divs
         $(front_div).prepend($('<img>', {src:characters[i].photo}));
         $(back_div).prepend($('<img>', {src:'images/card_back1.jpg'}));
         $(card_div).append(front_div).append(back_div);
-
-        //place card into game area
+        //place cards with images into game area
         $('#game-area').append(card_div);
     }
-
-
 } 
 
 
 function clickHandler() {
-    console.log('function clickHandler called');
     $(this).toggleClass('reveal');
     if(first_card_clicked === null) {
-        $(this) = first_card_clicked; 
+        console.log('first card has been clicked');
+        first_card_clicked = $(this); 
     } else {
-        $(this) = second_card_clicked;
+        console.log('second card has been clicked');
+        second_card_clicked = $(this);
+        if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
+            console.log('The cards are a match!');
+            first_card_clicked = null;
+            second_card_clicked = null;
+        } else {
+            console.log('The cards DO NOT match');
+            first_card_clicked = null;
+            second_card_clicked = null;
+        }
     }
+}
 
-    if(first_card_clicked === second_card_clicked) {
-        console.log('The cards are a match!');
-    } else {
-        console.log('The cards DO NOT match');
-
-    }
+function checkMatch() {
+    
 }
 
 
 var characters = [
+    {
+        gameName: 'Ana',
+        fullName: 'Ana Amari',
+        role: 'Support',
+        difficulty: 3,
+        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
+        age: 60,
+        occupation: 'Bounty Hunter',
+        baseOfOperations: 'Cairo, Egypt',
+        affiliation: 'Overwatch (formerly)',
+        sound: '',
+        photo: 'characters/ana.png'
+    },
     {
         gameName: 'Ana',
         fullName: 'Ana Amari',
