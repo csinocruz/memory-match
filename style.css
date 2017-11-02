@@ -45,12 +45,13 @@ h1 {
     min-height: 40vh;
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
 }
 
 .card {
     border-radius: 5px;
-    height: 14vh;
-    width: 12vw;
+    height: 16vh;
+    width: 9vw;
     margin: 9px;
     position: relative;
     display: inline-block;

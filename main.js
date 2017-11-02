@@ -53,12 +53,29 @@ function setBackground() {
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
 
-
-
 function initializeApp() {
     console.log('function initializeApp called');
+    createCards();
     $('.card').click(clickHandler);
 }
+
+function createCards() {
+    for (var i=0; i<characters.length; i++) {
+        var card_div = $('<div>').addClass('card');
+        var front_div = $('<div>').addClass('front');
+        var back_div = $('<div>').addClass('back');
+
+        $(front_div).prepend($('<img>', {src:characters[i].photo}));
+        $(back_div).prepend($('<img>', {src:'images/card_back1.jpg'}));
+        $(card_div).append(front_div).append(back_div);
+
+        //place card into game area
+        $('#game-area').append(card_div);
+    }
+
+
+} 
+
 
 function clickHandler() {
     console.log('function clickHandler called');
