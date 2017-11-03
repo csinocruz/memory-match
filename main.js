@@ -43,7 +43,7 @@ console.log(i)
 audio.src = playlist[i];
 audio.play();
 }, true);
-audio.volume = 0.3;
+audio.volume = 0.1;
 audio.loop = false;
 audio.src = playlist[0];
 audio.play();
@@ -61,7 +61,7 @@ function initializeApp() {
 }
 
 function createCards() {
-    for (var i=0; i<19; i++) {
+    for (var i=0; i<characters.length; i++) {
         //create card divs
         var card_div = $('<div>').addClass('card');
         var front_div = $('<div>').addClass('front');
@@ -118,8 +118,6 @@ function clickHandler() {
 //     return name;
 // }
 
-
-
 var characters = [
     {
         gameName: 'Ana',
@@ -157,7 +155,7 @@ var characters = [
         occupation: 'Battle Automaton',
         baseOfOperations: 'Unknown',
         affiliation: 'None',
-        sound: '',
+        sound: 'character_sounds/bastion_phrase.mp3',
         photo: 'characters/bastion.png'
     },
     {
@@ -170,7 +168,7 @@ var characters = [
         occupation: 'Mercenary',
         baseOfOperations: 'Oyo, Nigeria',
         affiliation: 'Talon',
-        sound: '',
+        sound: 'character_sounds/announcer_sound2.mp3',
         photo: 'characters/doomfist.png'
     },
     {
@@ -183,7 +181,7 @@ var characters = [
         occupation: 'Pro Gamer (formerly), Mech Pilot',
         baseOfOperations: 'Busan, South Korea',
         affiliation: 'Mobile Exo-Force of the Korean Army',
-        sound: '',
+        sound: 'character_sounds/dva_phrase.mp3',
         photo: 'characters/dva.png'
     },
     {
@@ -196,7 +194,7 @@ var characters = [
         occupation: 'Adventurer',
         baseOfOperations: 'Shambali Monastery, Nepal',
         affiliation: 'Shimada Clan (formerly), Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/genji_phrase.mp3',
         photo: 'characters/genji.png'
     },
     {
@@ -209,7 +207,7 @@ var characters = [
         occupation: 'Mercenary, Assassin',
         baseOfOperations: 'Hanamura, Japan (formerly)',
         affiliation: 'Shimada Clan',
-        sound: '',
+        sound: 'character_sounds/hanzo_phrase.mp3',
         photo: 'characters/hanzo.png'
     },
     {
@@ -222,7 +220,7 @@ var characters = [
         occupation: 'Anarchist, Thief, Demolitionist, Mercenary, Scavenger',
         baseOfOperations: 'Junkertown, Australia (formerly)',
         affiliation: 'Junkers (formerly)',
-        sound: '',
+        sound: 'character_sounds/junkrat_phrase.mp3',
         photo: 'characters/junkrat.png'
     },
     {
@@ -235,7 +233,7 @@ var characters = [
         occupation: 'DJ, Freedom Fighter',
         baseOfOperations: 'Rio de Janeiro, Brazil',
         affiliation: 'None',
-        sound: '',
+        sound: 'character_sounds/lucio_phrase.mp3',
         photo: 'characters/lucio.png'
     },
     {
@@ -248,7 +246,7 @@ var characters = [
         occupation: 'Bounty Hunter',
         baseOfOperations: 'Santa Fe, New Mexico, USA',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/mccree_phrase.mp3',
         photo: 'characters/mccree.png'
     },
     {
@@ -261,7 +259,7 @@ var characters = [
         occupation: 'Climatologist, Adventurer',
         baseOfOperations: 'Xi’an, China (formerly)',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/mei_phrase.mp3',
         photo: 'characters/mei.png'
     },
     {
@@ -274,7 +272,7 @@ var characters = [
         occupation: 'Field Medic, First Responder',
         baseOfOperations: 'Zürich, Switzerland',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/mercy_phrase.mp3',
         photo: 'characters/mercy.png'
     },
     {
@@ -287,7 +285,7 @@ var characters = [
         occupation: 'Guardian Robot',
         baseOfOperations: 'Numbani',
         affiliation: 'None',
-        sound: '',
+        sound: 'character_sounds/announcer_sound1.mp3',
         photo: 'characters/orisa.png'
     },
     {
@@ -300,7 +298,7 @@ var characters = [
         occupation: 'Security Chief',
         baseOfOperations: 'Giza, Egypt',
         affiliation: 'Helix Security International',
-        sound: '',
+        sound: 'character_sounds/pharah_phrase.mp3',
         photo: 'characters/pharah.png'
     },
     {
@@ -313,7 +311,7 @@ var characters = [
         occupation: 'Mercenary',
         baseOfOperations: 'Unknown',
         affiliation: 'Unknown',
-        sound: '',
+        sound: 'character_sounds/reaper_phrase.mp3',
         photo: 'characters/reaper.png'
     },
     {
@@ -326,7 +324,7 @@ var characters = [
         occupation: 'Adventurer',
         baseOfOperations: 'Stuttgart, Germany',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/reinhardt_phrase.mp3',
         photo: 'characters/reinhardt.png'
     },
     {
@@ -339,7 +337,7 @@ var characters = [
         occupation: 'Enforcer (formerly), Bodyguard',
         baseOfOperations: 'Junkertown, Australia (formerly)',
         affiliation: 'Junkers (formerly)',
-        sound: '',
+        sound: 'character_sounds/roadhog_phrase.mp3',
         photo: 'characters/roadhog.png'
     },
     {
@@ -352,7 +350,7 @@ var characters = [
         occupation: 'Vigilante',
         baseOfOperations: 'Unknown',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/soldier76_phrase.mp3',
         photo: 'characters/soldier76.png'
     },
     {
@@ -365,7 +363,7 @@ var characters = [
         occupation: 'Hacker',
         baseOfOperations: 'Dorado, Mexico',
         affiliation: 'Los Muertos (formerly)',
-        sound: '',
+        sound: 'character_sounds/announcer_sound2.mp3',
         photo: 'characters/sombra.png'
     },
     {
@@ -378,7 +376,7 @@ var characters = [
         occupation: 'Architech',
         baseOfOperations: 'Utopaea, India',
         affiliation: 'Vishkar Corporation',
-        sound: '',
+        sound: 'character_sounds/symmetra_phrase.mp3',
         photo: 'characters/symmetra.png'
     },
     {
@@ -391,7 +389,7 @@ var characters = [
         occupation: 'Weapons Designer',
         baseOfOperations: 'Gothenburg, Sweden',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/torbjorn_phrase.mp3',
         photo: 'characters/torbjorn.png'
     },
     {
@@ -404,7 +402,7 @@ var characters = [
         occupation: 'Adventurer',
         baseOfOperations: 'London, England',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/tracer_phrase.mp3',
         photo: 'characters/tracer.png'
     },
     {
@@ -417,7 +415,7 @@ var characters = [
         occupation: 'Assassin',
         baseOfOperations: 'Annecy, France',
         affiliation: 'Talon',
-        sound: '',
+        sound: 'character_sounds/widowmaker_phrase.mp3',
         photo: 'characters/widowmaker.png'
     },
     {
@@ -430,7 +428,7 @@ var characters = [
         occupation: 'Scientist, Adventurer',
         baseOfOperations: 'Horizon Lunar Colony (formerly)',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/winston_phrase.mp3',
         photo: 'characters/winston.png'
     },
     {
@@ -443,7 +441,7 @@ var characters = [
         occupation: 'Soldier',
         baseOfOperations: 'Krasnoyarsk Front, Russia',
         affiliation: 'Russian Defense Forces',
-        sound: '',
+        sound: 'character_sounds/zarya_phrase.mp3',
         photo: 'characters/zarya.png'
     },
     {
@@ -456,7 +454,7 @@ var characters = [
         occupation: 'Wandering Guru, Adventurer',
         baseOfOperations: 'Shambali Monastery, Nepal (formerly)',
         affiliation: 'The Shambali (formerly)',
-        sound: '',
+        sound: 'character_sounds/zenyatta_phrase.mp3',
         photo: 'characters/zenyatta.png'
     }
 ]
