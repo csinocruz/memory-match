@@ -32,8 +32,12 @@ var playlist = new Array(
     'music/4732.mp3'
 );
 
+var can_click = true;
 var first_card_clicked = null;
 var second_card_clicked = null;
+total_possible_matches = 25;
+match_counter = 0;
+
 
 //Code regarding audio is copied and pasted,
 //I do not know how the code is working. Will inquire...
@@ -66,7 +70,7 @@ function shuffledCards(char_array) {
     var temp = null;
 
     for (i=char_array.length-1; i>=0; i-=1) {
-        j = Math.floor(Math.random() * i + 1);
+        j = Math.floor(Math.random() * (i + 1));
         temp = char_array[i];
         char_array[i] = char_array[j];
         char_array[j] = temp;
@@ -93,48 +97,60 @@ function createCards() {
 } 
 
 function clickHandler() {
-    $(this).toggleClass('reveal');
-    var the_card = $(this);
-    var string = the_card.find('img').attr('src');
-    
-    function findCharObject(key, array) {
-        for (var i=0; i<array.length; i++) {
-            if(array[i].photo === string) {
-                return array[i];
+    if(can_click === true) {
+        $(this).toggleClass('reveal');
+        var the_card = $(this);
+        var string = the_card.find('img').attr('src');
+        
+        function findCharObject(key, array) {
+            for (var i=0; i<array.length; i++) {
+                if(array[i].photo === string) {
+                    return array[i];
+                }
             }
         }
-    }
-    var resultOfFindCharObject = findCharObject(string, characters);
-
-    character_audio.src = resultOfFindCharObject.sound;
-    character_audio.play();
+        var resultOfFindCharObject = findCharObject(string, characters);
     
-    if(first_card_clicked === null) {
-        console.log('first card has been clicked');
-        first_card_clicked = $(this); 
-    } else {
-        console.log('second card has been clicked');
-        second_card_clicked = $(this);
-        if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
-            console.log('The cards are a match!');
-            setTimeout(function() {
-                first_card_clicked.css('opacity', '0');
-                first_card_clicked = null;
-            }, 2000);
-            setTimeout(function() {
-                second_card_clicked.css('opacity', '0');
-                second_card_clicked = null;
-            }, 2000);
+        character_audio.src = resultOfFindCharObject.sound;
+        character_audio.play();
+        
+        if(first_card_clicked === null) {
+            console.log('first card has been clicked');
+            first_card_clicked = $(this); 
         } else {
-            console.log('The cards DO NOT match');
-            setTimeout(function() {
-                first_card_clicked.toggleClass('reveal');
-                first_card_clicked = null;
-            }, 2000);
-            setTimeout(function() {
-                second_card_clicked.toggleClass('reveal');
-                second_card_clicked = null;
-            },2000);
+            console.log('second card has been clicked');
+            can_click = false;
+            second_card_clicked = $(this);
+            if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
+                match_counter++;
+                console.log(match_counter);
+                console.log('The cards are a match!');
+                setTimeout(function() {
+                    first_card_clicked.css('opacity', '0');
+                    first_card_clicked = null;
+                    can_click = true;
+                }, 2000);
+                setTimeout(function() {
+                    second_card_clicked.css('opacity', '0');
+                    second_card_clicked = null;
+                    can_click = true;
+                }, 2000);
+                if (match_counter === total_possible_matches) {
+                    console.log('You have won the game!');
+                }
+            } else {
+                console.log('The cards DO NOT match');
+                setTimeout(function() {
+                    first_card_clicked.toggleClass('reveal');
+                    first_card_clicked = null;
+                    can_click = true;
+                }, 2000);
+                setTimeout(function() {
+                    second_card_clicked.toggleClass('reveal');
+                    second_card_clicked = null;
+                    can_click = true;
+                },2000);
+            }
         }
     }
 }
