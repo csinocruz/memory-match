@@ -60,27 +60,42 @@ function initializeApp() {
     $('.card').click(clickHandler);
 }
 
+function shuffledCards(char_array) {
+    var i = 0;
+    var j = 0;
+    var temp = null;
+
+    for (i=char_array.length-1; i>=0; i-=1) {
+        j = Math.floor(Math.random() * i + 1);
+        temp = char_array[i];
+        char_array[i] = char_array[j];
+        char_array[j] = temp;
+    }
+    return char_array;
+}
+
 function createCards() {
-    for (var i=0; i<characters.length; i++) {
-        //create card divs
-        var card_div = $('<div>').addClass('card');
-        var front_div = $('<div>').addClass('front');
-        var back_div = $('<div>').addClass('back');
-        //add images to card divs
-        $(front_div).prepend($('<img>', {src:characters[i].photo}));
-        $(back_div).prepend($('<img>', {src:'images/card_back1.jpg'}));
-        $(card_div).append(front_div).append(back_div);
-        //place cards with images into game area
-        $('#game-area').append(card_div);
+    for (var j=0; j<2; j++) {
+        var deck = shuffledCards(characters);
+        for (var i=0; i<deck.length; i++) {
+            //create card divs
+            var card_div = $('<div>').addClass('card');
+            var front_div = $('<div>').addClass('front');
+            var back_div = $('<div>').addClass('back');
+            //add images to card divs
+            $(front_div).prepend($('<img>', {src:characters[i].photo}));
+            $(back_div).prepend($('<img>', {src:'images/card_back1.jpg'}));
+            $(card_div).append(front_div).append(back_div);
+            //place cards with images into game area
+            $('#game-area').append(card_div);
+        }
     }
 } 
-
 
 function clickHandler() {
     $(this).toggleClass('reveal');
     var the_card = $(this);
     var string = the_card.find('img').attr('src');
-    // var char_name = getPhotoName(string);
     
     function findCharObject(key, array) {
         for (var i=0; i<array.length; i++) {
@@ -102,36 +117,29 @@ function clickHandler() {
         second_card_clicked = $(this);
         if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
             console.log('The cards are a match!');
-            first_card_clicked = null;
-            second_card_clicked = null;
+            setTimeout(function() {
+                first_card_clicked.css('opacity', '0');
+                first_card_clicked = null;
+            }, 2000);
+            setTimeout(function() {
+                second_card_clicked.css('opacity', '0');
+                second_card_clicked = null;
+            }, 2000);
         } else {
             console.log('The cards DO NOT match');
-            first_card_clicked = null;
-            second_card_clicked = null;
+            setTimeout(function() {
+                first_card_clicked.toggleClass('reveal');
+                first_card_clicked = null;
+            }, 2000);
+            setTimeout(function() {
+                second_card_clicked.toggleClass('reveal');
+                second_card_clicked = null;
+            },2000);
         }
     }
 }
 
-// function getPhotoName(string) {
-//     var result_arr = string.split('/');
-//     var name = result_arr[1];
-//     return name;
-// }
-
 var characters = [
-    {
-        gameName: 'Ana',
-        fullName: 'Ana Amari',
-        role: 'Support',
-        difficulty: 3,
-        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
-        age: 60,
-        occupation: 'Bounty Hunter',
-        baseOfOperations: 'Cairo, Egypt',
-        affiliation: 'Overwatch (formerly)',
-        sound: 'character_sounds/announcer_sound1.mp3',
-        photo: 'characters/ana.png'
-    },
     {
         gameName: 'Ana',
         fullName: 'Ana Amari',
