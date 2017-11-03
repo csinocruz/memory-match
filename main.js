@@ -1,4 +1,42 @@
 $(document).ready(function() {
+    var cube_face = 1;
+    var panel = '';
+    $('#now').click(function() {
+        cube_face++;
+        switch(cube_face) {
+            case 1:
+                $("#cube").toggleClass("show-front"); 
+                $("#cube").removeClass(panel); 
+                panel="show-front"; 
+                break;
+            case 2:
+                $("#cube").toggleClass("show-left"); 
+                $("#cube").removeClass(panel); 
+                panel="show-left"; 
+                break;
+            case 3:
+                $("#cube").toggleClass("show-right"); 
+                $("#cube").removeClass(panel); 
+                panel="show-right"; 
+                break;
+            case 4:
+                $("#cube").toggleClass("show-back"); 
+                $("#cube").removeClass(panel); 
+                panel="show-back"; 
+                break;
+            case 5:
+                $("#cube").toggleClass("show-top"); 
+                $("#cube").removeClass(panel); 
+                panel="show-top"; 
+                break;
+            case 6:
+                $("#cube").toggleClass("show-bottom"); 
+                $("#cube").removeClass(panel); 
+                panel="show-bottom"; 
+                cube_face = 0;
+                break;
+        }
+    })
     console.log('document loaded'),
     setBackground(),
     initializeApp()
@@ -35,7 +73,7 @@ var playlist = new Array(
 var can_click = true;
 var first_card_clicked = null;
 var second_card_clicked = null;
-total_possible_matches = 25;
+total_possible_matches = 1;
 match_counter = 0;
 
 
@@ -81,7 +119,8 @@ function shuffledCards(char_array) {
 function createCards() {
     for (var j=0; j<2; j++) {
         var deck = shuffledCards(characters);
-        for (var i=0; i<deck.length; i++) {
+        // for (var i=0; i<deck.length; i++) {
+        for (var i=0; i<8; i++) {
             //create card divs
             var card_div = $('<div>').addClass('card');
             var front_div = $('<div>').addClass('front');
@@ -102,6 +141,7 @@ function clickHandler() {
         var the_card = $(this);
         var string = the_card.find('img').attr('src');
         
+        //finding character object in order to play their unique mp3 phrase
         function findCharObject(key, array) {
             for (var i=0; i<array.length; i++) {
                 if(array[i].photo === string) {
@@ -110,10 +150,10 @@ function clickHandler() {
             }
         }
         var resultOfFindCharObject = findCharObject(string, characters);
-    
         character_audio.src = resultOfFindCharObject.sound;
         character_audio.play();
         
+        //when a card is clicked
         if(first_card_clicked === null) {
             console.log('first card has been clicked');
             first_card_clicked = $(this); 
@@ -121,6 +161,7 @@ function clickHandler() {
             console.log('second card has been clicked');
             can_click = false;
             second_card_clicked = $(this);
+
             if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
                 match_counter++;
                 console.log(match_counter);
@@ -137,6 +178,10 @@ function clickHandler() {
                 }, 2000);
                 if (match_counter === total_possible_matches) {
                     console.log('You have won the game!');
+                    var next_round_div = $('<div>').attr('id', 'go');
+                    var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
+                    $(next_round_div).append(next_round_button)
+                    $('#game-rounds-area').append(next_round_div);
                 }
             } else {
                 console.log('The cards DO NOT match');
