@@ -23,6 +23,7 @@ var background_images = [
     'images/Maps/watchpoint_gibraltar.jpg'
 ]
 
+var character_audio = new Audio();
 var audio = new Audio(),
 i = 0;
 var playlist = new Array(
@@ -77,6 +78,22 @@ function createCards() {
 
 function clickHandler() {
     $(this).toggleClass('reveal');
+    var the_card = $(this);
+    var string = the_card.find('img').attr('src');
+    // var char_name = getPhotoName(string);
+    
+    function findCharObject(key, array) {
+        for (var i=0; i<array.length; i++) {
+            if(array[i].photo === string) {
+                return array[i];
+            }
+        }
+    }
+    var resultOfFindCharObject = findCharObject(string, characters);
+
+    character_audio.src = resultOfFindCharObject.sound;
+    character_audio.play();
+    
     if(first_card_clicked === null) {
         console.log('first card has been clicked');
         first_card_clicked = $(this); 
@@ -95,9 +112,12 @@ function clickHandler() {
     }
 }
 
-function checkMatch() {
-    
-}
+// function getPhotoName(string) {
+//     var result_arr = string.split('/');
+//     var name = result_arr[1];
+//     return name;
+// }
+
 
 
 var characters = [
@@ -111,7 +131,7 @@ var characters = [
         occupation: 'Bounty Hunter',
         baseOfOperations: 'Cairo, Egypt',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/announcer_sound1.mp3',
         photo: 'characters/ana.png'
     },
     {
@@ -124,7 +144,7 @@ var characters = [
         occupation: 'Bounty Hunter',
         baseOfOperations: 'Cairo, Egypt',
         affiliation: 'Overwatch (formerly)',
-        sound: '',
+        sound: 'character_sounds/announcer_sound2.mp3',
         photo: 'characters/ana.png'
     },
     {
