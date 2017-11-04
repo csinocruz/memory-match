@@ -3,10 +3,17 @@ $(document).ready(function() {
     var panel = '';
     $('#game-rounds-area').on('click','button',function() {
         //new set of cards for next round
-        match_counter = 0;
-        createCards(window["round" + round + "_deck"]);
+
+        //if statement or switch case - depending on round, 
+        //add match counter value accodingly inside
+        match_counter = 0; 
+        createCards(window["round" + round + "_deck"]); //turns string into var/param, SO COOL!
         $('.card').click(clickHandler);
+
+        //cube displays which round it is, so every new round we increment
         cube_face++;
+        //switch sets which side of the cube to display by adding
+        //appropriate animation via toggle/removing class name
         switch(cube_face) {
             case 1:
                 $("#cube").toggleClass("show-front"); 
@@ -40,6 +47,7 @@ $(document).ready(function() {
                 cube_face = 0;
                 break;
         }
+        //after start next round button is clicked, it is removed
         $('#now').remove();
     }),
     setBackground(),
@@ -86,11 +94,10 @@ var playlist = new Array(
 //I do not know how the code is working. Will inquire...
 audio.addEventListener('ended', function () {
 i = ++i < playlist.length ? i : 0;
-console.log(i)
 audio.src = playlist[i];
 audio.play();
 }, true);
-audio.volume = 0.1;
+audio.volume = 0.3;
 audio.loop = false;
 audio.src = playlist[0];
 audio.play();
@@ -105,6 +112,9 @@ function initializeApp() {
     $('.card').click(clickHandler);
 }
 
+//random number is generated and index's are swapped depending on how many
+//"cards" are in the array. For example, if there are 5 elements in the array, 
+//they will each be swapped randomly 5x
 function shuffledCards(char_array) {
     var i = 0;
     var j = 0;
@@ -119,11 +129,11 @@ function shuffledCards(char_array) {
     return char_array;
 }
 
+//function adds "cards" to the DOM
 function createCards(current_deck) {
     for (var j=0; j<2; j++) {
         var deck = shuffledCards(current_deck);
-        // for (var i=0; i<deck.length; i++) {
-        for (var i=0; i<4; i++) {
+        for (var i=0; i<deck.length; i++) {
             //create card divs
             var card_div = $('<div>').addClass('card');
             var front_div = $('<div>').addClass('front');
@@ -143,10 +153,9 @@ function clickHandler() {
         var the_card = $(this);
         $(the_card).addClass('spin');
         $(this).toggleClass('reveal');
-        // var the_card = $(this);
-        var string = the_card.find('img').attr('src');
-        
+
         //finding character object in order to play their unique mp3 phrase
+        var string = the_card.find('img').attr('src');
         function findCharObject(key, array) {
             for (var i=0; i<array.length; i++) {
                 if(array[i].photo === string) {
@@ -158,42 +167,42 @@ function clickHandler() {
         character_audio.src = resultOfFindCharObject.sound;
         character_audio.play();
         
-        //when a card is clicked
+        //when a card is clicked, this checks if it is the 1st or 2nd card
         if(first_card_clicked === null) {
-            console.log('first card has been clicked');
             first_card_clicked = $(this); 
         } else {
-            console.log('second card has been clicked');
             can_click = false;
             second_card_clicked = $(this);
 
             if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
+                //cards are a match
                 match_counter++;
-                console.log(match_counter);
-                console.log('The cards are a match!');
                 setTimeout(function() {
-                    first_card_clicked.css('opacity', '0');
+                    first_card_clicked.css('opacity', '0');  //HELP!!
                     first_card_clicked = null;
                     can_click = true;
                 }, 2000);
                 setTimeout(function() {
-                    second_card_clicked.css('opacity', '0');
+                    second_card_clicked.css('opacity', '0');  //HELP!!
                     second_card_clicked = null;
                     can_click = true;
                 }, 2000);
                 if (match_counter === totalMatchesPerRound) {
                     console.log(`You have won round ${round}!`);
                     round++;
-                    //creates button to move onto the next round
-                    var next_round_div = $('<div>').attr('id', 'go');
-                    var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
-                    $(next_round_div).append(next_round_button)
-                    $('#game-rounds-area').append(next_round_div);
-                    $('div.card.reveal').remove();
+                    //once all matches have been found in current round
+                    //this creates button to move onto the next round
+                    setTimeout(function() {
+                        var next_round_div = $('<div>').attr('id', 'go');
+                        var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
+                        $(next_round_div).append(next_round_button)
+                        $('#game-rounds-area').append(next_round_div);
+                        $('div.card.reveal').remove();
+                    }, 3000);
                 }
 
             } else {
-                console.log('The cards DO NOT match');
+                //cards do not match, flip back
                 setTimeout(function() {
                     first_card_clicked.toggleClass('reveal');
                     $(first_card_clicked).removeClass('spin');
