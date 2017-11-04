@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var cube_face = 1;
     var panel = '';
-    $('#now').click(function() {
+    $('#game-rounds-area').on('click','button',function() {
         cube_face++;
         switch(cube_face) {
             case 1:
@@ -36,7 +36,11 @@ $(document).ready(function() {
                 cube_face = 0;
                 break;
         }
-    })
+        $('#now').remove();
+    }),
+    // $('#game-rounds-area').on('click','button',function() {
+    //     $('#now').remove();
+    // }),
     console.log('document loaded'),
     setBackground(),
     initializeApp()
@@ -119,8 +123,8 @@ function shuffledCards(char_array) {
 function createCards() {
     for (var j=0; j<2; j++) {
         var deck = shuffledCards(characters);
-        // for (var i=0; i<deck.length; i++) {
-        for (var i=0; i<8; i++) {
+        for (var i=0; i<deck.length; i++) {
+        // for (var i=0; i<8; i++) {
             //create card divs
             var card_div = $('<div>').addClass('card');
             var front_div = $('<div>').addClass('front');
@@ -183,6 +187,7 @@ function clickHandler() {
                     $(next_round_div).append(next_round_button)
                     $('#game-rounds-area').append(next_round_div);
                 }
+
             } else {
                 console.log('The cards DO NOT match');
                 setTimeout(function() {
@@ -198,6 +203,10 @@ function clickHandler() {
             }
         }
     }
+}
+
+function nextRound() {
+    console.log('nextRound function has been called');
 }
 
 var characters = [

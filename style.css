@@ -111,7 +111,8 @@ button:hover {
     -moz-perspective: 1000px; 
     -o-perspective: 1000px; 
     perspective: 1000px; 
-    margin: 0 auto 40px; 
+    margin: auto; 
+    margin-bottom: 0px;
 }
 
 #cube { 
@@ -243,19 +244,10 @@ button:hover {
 }
 
 #go{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    margin-top: 5px;
   }
 
-#cube-and-game-area {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-      align-items: baseline; 
-  }
-
-#game-rounds-area, #game-area {
-       align-self: baseline;
+#now {
+    margin: auto;
 }
