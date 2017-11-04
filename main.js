@@ -2,6 +2,10 @@ $(document).ready(function() {
     var cube_face = 1;
     var panel = '';
     $('#game-rounds-area').on('click','button',function() {
+        //new set of cards for next round
+        match_counter = 0;
+        createCards(window["round" + round + "_deck"]);
+        $('.card').click(clickHandler);
         cube_face++;
         switch(cube_face) {
             case 1:
@@ -38,10 +42,6 @@ $(document).ready(function() {
         }
         $('#now').remove();
     }),
-    // $('#game-rounds-area').on('click','button',function() {
-    //     $('#now').remove();
-    // }),
-    console.log('document loaded'),
     setBackground(),
     initializeApp()
 });
@@ -65,6 +65,14 @@ var background_images = [
     'images/Maps/watchpoint_gibraltar.jpg'
 ]
 
+var can_click = true;
+var first_card_clicked = null;
+var second_card_clicked = null;
+round = 1;
+totalMatchesPerRound = 4;
+match_counter = 0;
+total_matches_counter = 0;
+
 var character_audio = new Audio();
 var audio = new Audio(),
 i = 0;
@@ -73,13 +81,6 @@ var playlist = new Array(
     'music/1211.mp3',
     'music/4732.mp3'
 );
-
-var can_click = true;
-var first_card_clicked = null;
-var second_card_clicked = null;
-total_possible_matches = 1;
-match_counter = 0;
-
 
 //Code regarding audio is copied and pasted,
 //I do not know how the code is working. Will inquire...
@@ -95,14 +96,12 @@ audio.src = playlist[0];
 audio.play();
 
 function setBackground() {
-    console.log('function setBackground called');
     var randomImgNum = Math.floor(Math.random()*16);
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
 }
 
 function initializeApp() {
-    console.log('function initializeApp called');
-    createCards();
+    createCards(round1_deck);
     $('.card').click(clickHandler);
 }
 
@@ -120,17 +119,17 @@ function shuffledCards(char_array) {
     return char_array;
 }
 
-function createCards() {
+function createCards(current_deck) {
     for (var j=0; j<2; j++) {
-        var deck = shuffledCards(characters);
-        for (var i=0; i<deck.length; i++) {
-        // for (var i=0; i<8; i++) {
+        var deck = shuffledCards(current_deck);
+        // for (var i=0; i<deck.length; i++) {
+        for (var i=0; i<4; i++) {
             //create card divs
             var card_div = $('<div>').addClass('card');
             var front_div = $('<div>').addClass('front');
             var back_div = $('<div>').addClass('back');
             //add images to card divs
-            $(front_div).prepend($('<img>', {src:characters[i].photo}));
+            $(front_div).prepend($('<img>', {src:deck[i].photo}));
             $(back_div).prepend($('<img>', {src:'images/card_back1.jpg'}));
             $(card_div).append(front_div).append(back_div);
             //place cards with images into game area
@@ -141,8 +140,10 @@ function createCards() {
 
 function clickHandler() {
     if(can_click === true) {
-        $(this).toggleClass('reveal');
         var the_card = $(this);
+        $(the_card).addClass('spin');
+        $(this).toggleClass('reveal');
+        // var the_card = $(this);
         var string = the_card.find('img').attr('src');
         
         //finding character object in order to play their unique mp3 phrase
@@ -180,34 +181,146 @@ function clickHandler() {
                     second_card_clicked = null;
                     can_click = true;
                 }, 2000);
-                if (match_counter === total_possible_matches) {
-                    console.log('You have won the game!');
+                if (match_counter === totalMatchesPerRound) {
+                    console.log(`You have won round ${round}!`);
+                    round++;
+                    //creates button to move onto the next round
                     var next_round_div = $('<div>').attr('id', 'go');
                     var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
                     $(next_round_div).append(next_round_button)
                     $('#game-rounds-area').append(next_round_div);
+                    $('div.card.reveal').remove();
                 }
 
             } else {
                 console.log('The cards DO NOT match');
                 setTimeout(function() {
                     first_card_clicked.toggleClass('reveal');
+                    $(first_card_clicked).removeClass('spin');
                     first_card_clicked = null;
                     can_click = true;
-                }, 2000);
+                }, 2500);
                 setTimeout(function() {
                     second_card_clicked.toggleClass('reveal');
+                    $(second_card_clicked).removeClass('spin');
                     second_card_clicked = null;
                     can_click = true;
-                },2000);
+                },2500);
             }
         }
     }
 }
 
-function nextRound() {
-    console.log('nextRound function has been called');
-}
+var round1_deck = [
+    {
+        gameName: 'Ana',
+        fullName: 'Ana Amari',
+        role: 'Support',
+        difficulty: 3,
+        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
+        age: 60,
+        occupation: 'Bounty Hunter',
+        baseOfOperations: 'Cairo, Egypt',
+        affiliation: 'Overwatch (formerly)',
+        sound: 'character_sounds/announcer_sound2.mp3',
+        photo: 'characters/ana.png'
+    },
+    {
+        gameName: 'Bastion',
+        fullName: 'SST Laboratories Siege Automaton E54, “Bastion"',
+        role: 'Defense',
+        difficulty: 1,
+        abilities: ['Configuration: Recon', 'Configuration: Sentry', 'Reconfigure', 'Self-repair', 'Configuration: Tank'],
+        age: 30,
+        occupation: 'Battle Automaton',
+        baseOfOperations: 'Unknown',
+        affiliation: 'None',
+        sound: 'character_sounds/bastion_phrase.mp3',
+        photo: 'characters/bastion.png'
+    },
+    {
+        gameName: 'Doomfist',
+        fullName: 'Akande Ogundimu',
+        role: 'Offense',
+        difficulty: 3,
+        abilities: ['Hand Cannon', 'Seismic Slam', 'Rising Uppercut', 'Rocket Punch', 'The Best Defense...', 'Meteor Strike'],
+        age: 45,
+        occupation: 'Mercenary',
+        baseOfOperations: 'Oyo, Nigeria',
+        affiliation: 'Talon',
+        sound: 'character_sounds/announcer_sound2.mp3',
+        photo: 'characters/doomfist.png'
+    },
+    {
+        gameName: 'D.Va',
+        fullName: 'Hana Song',
+        role: 'Tank',
+        difficulty: 3,
+        abilities: ['Fusion Cannons', 'Light Gun', 'Boosters', 'Defense Matrix', 'Self-destruct', 'Call Mech'],
+        age: 19,
+        occupation: 'Pro Gamer (formerly), Mech Pilot',
+        baseOfOperations: 'Busan, South Korea',
+        affiliation: 'Mobile Exo-Force of the Korean Army',
+        sound: 'character_sounds/dva_phrase.mp3',
+        photo: 'characters/dva.png'
+    }
+];
+
+var round2_deck = [
+    {
+        gameName: 'Ana',
+        fullName: 'Ana Amari',
+        role: 'Support',
+        difficulty: 3,
+        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
+        age: 60,
+        occupation: 'Bounty Hunter',
+        baseOfOperations: 'Cairo, Egypt',
+        affiliation: 'Overwatch (formerly)',
+        sound: 'character_sounds/announcer_sound2.mp3',
+        photo: 'characters/ana.png'
+    },
+    {
+        gameName: 'Bastion',
+        fullName: 'SST Laboratories Siege Automaton E54, “Bastion"',
+        role: 'Defense',
+        difficulty: 1,
+        abilities: ['Configuration: Recon', 'Configuration: Sentry', 'Reconfigure', 'Self-repair', 'Configuration: Tank'],
+        age: 30,
+        occupation: 'Battle Automaton',
+        baseOfOperations: 'Unknown',
+        affiliation: 'None',
+        sound: 'character_sounds/bastion_phrase.mp3',
+        photo: 'characters/bastion.png'
+    },
+    {
+        gameName: 'Doomfist',
+        fullName: 'Akande Ogundimu',
+        role: 'Offense',
+        difficulty: 3,
+        abilities: ['Hand Cannon', 'Seismic Slam', 'Rising Uppercut', 'Rocket Punch', 'The Best Defense...', 'Meteor Strike'],
+        age: 45,
+        occupation: 'Mercenary',
+        baseOfOperations: 'Oyo, Nigeria',
+        affiliation: 'Talon',
+        sound: 'character_sounds/announcer_sound2.mp3',
+        photo: 'characters/doomfist.png'
+    },
+    {
+        gameName: 'D.Va',
+        fullName: 'Hana Song',
+        role: 'Tank',
+        difficulty: 3,
+        abilities: ['Fusion Cannons', 'Light Gun', 'Boosters', 'Defense Matrix', 'Self-destruct', 'Call Mech'],
+        age: 19,
+        occupation: 'Pro Gamer (formerly), Mech Pilot',
+        baseOfOperations: 'Busan, South Korea',
+        affiliation: 'Mobile Exo-Force of the Korean Army',
+        sound: 'character_sounds/dva_phrase.mp3',
+        photo: 'characters/dva.png'
+    }
+];
+
 
 var characters = [
     {
