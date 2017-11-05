@@ -2,7 +2,26 @@ $(document).ready(function() {
     var cube_face = 1;
     var panel = '';
     $('#game-rounds-area').on('click','button',function() {
+        console.log('Next round is: ' + round);
+        $('#game-area').css('display', 'flex');
         //new set of cards for next round
+        switch(round) {
+            case 2: 
+                totalMatchesPerRound = 3;
+                break;
+            case 3:
+                totalMatchesPerRound = 4;
+                break;
+            case 4: 
+                totalMatchesPerRound = 5;
+                break;
+            case 5: 
+                totalMatchesPerRound = 5;
+                break;
+            case 6: 
+                totalMatchesPerRound = 6;
+                break;
+        }
 
         //if statement or switch case - depending on round, 
         //add match counter value accodingly inside
@@ -76,10 +95,10 @@ var background_images = [
 var can_click = true;
 var first_card_clicked = null;
 var second_card_clicked = null;
-round = 1;
-totalMatchesPerRound = 4;
+var round = 1;
+var totalMatchesPerRound = 2;
 match_counter = 0;
-total_matches_counter = 0;
+total_matches_counter = 0; //maybe add this, still deciding if I want to
 
 var character_audio = new Audio();
 var audio = new Audio(),
@@ -164,7 +183,7 @@ function clickHandler() {
                 }
             }
         }
-        var resultOfFindCharObject = findCharObject(string, characters);
+        var resultOfFindCharObject = findCharObject(string, window["round" + round + "_deck"]);
         character_audio.src = resultOfFindCharObject.sound;
         character_audio.play();
         
@@ -191,15 +210,21 @@ function clickHandler() {
                 if (match_counter === totalMatchesPerRound) {
                     console.log(`You have won round ${round}!`);
                     round++;
-                    //once all matches have been found in current round
-                    //this creates button to move onto the next round
-                    setTimeout(function() {
-                        var next_round_div = $('<div>').attr('id', 'go');
-                        var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
-                        $(next_round_div).append(next_round_button)
-                        $('#game-rounds-area').append(next_round_div);
-                        $('div.card.reveal').remove();
-                    }, 3000);
+
+                    if(round < 7) {
+                        //once all matches have been found in current round
+                        //this creates button to move onto the next round
+                        setTimeout(function() {
+                            $('div.card.reveal').remove();
+                            var next_round_div = $('<div>').attr('id', 'go');
+                            var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
+                            $(next_round_div).append(next_round_button)
+                            $('#game-rounds-area').append(next_round_div);
+                            $('#game-area').css('display', 'none');
+                        }, 3000);
+                    } else {
+                        
+                    }
                 }
 
             } else {

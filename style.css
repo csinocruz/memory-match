@@ -42,10 +42,10 @@ h1 {
 }
 
 #game-area {
-    min-height: 40vh;
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
