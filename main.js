@@ -100,6 +100,9 @@ var totalMatchesPerRound = 2;
 match_counter = 0;
 total_matches_counter = 0; //maybe add this, still deciding if I want to
 
+var victory_audio = new Audio();
+var victory_mp3 = 'character_sounds/announce_next_round.mp3';
+    victory_audio.src = victory_mp3;
 var character_audio = new Audio();
 var audio = new Audio(),
 i = 0;
@@ -185,7 +188,7 @@ function clickHandler() {
         }
         var resultOfFindCharObject = findCharObject(string, window["round" + round + "_deck"]);
         character_audio.src = resultOfFindCharObject.sound;
-        character_audio.play();
+        // character_audio.play();
         
         //when a card is clicked, this checks if it is the 1st or 2nd card
         if(first_card_clicked === null) {
@@ -193,17 +196,18 @@ function clickHandler() {
         } else {
             can_click = false;
             second_card_clicked = $(this);
+            character_audio.play();
 
             if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
                 //cards are a match
                 match_counter++;
                 setTimeout(function() {
-                    first_card_clicked.css('opacity', '0');  //HELP!!
+                    first_card_clicked.remove();  //HELP!!
                     first_card_clicked = null;
                     can_click = true;
                 }, 2000);
                 setTimeout(function() {
-                    second_card_clicked.css('opacity', '0');  //HELP!!
+                    second_card_clicked.remove();  //HELP!!
                     second_card_clicked = null;
                     can_click = true;
                 }, 2000);
@@ -220,10 +224,13 @@ function clickHandler() {
                             var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
                             $(next_round_div).append(next_round_button)
                             $('#game-rounds-area').append(next_round_div);
+                            victory_audio.play();
                             $('#game-area').css('display', 'none');
-                        }, 3000);
+                        }, 2500);
                     } else {
-                        
+                        console.log('You have won all levels! Reset game to start over.');
+                        var group_photo = $('<img>').attr('src', 'images/victory.gif').css('border-radius', '9px');
+                        $('#game-area').append(group_photo);
                     }
                 }
 
