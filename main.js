@@ -102,6 +102,7 @@ audio.loop = false;
 audio.src = playlist[0];
 audio.play();
 
+//different background image at every refresh of page or reset of game
 function setBackground() {
     var randomImgNum = Math.floor(Math.random()*16);
     $('body').css('background-image', 'url(' + background_images[randomImgNum] + ')');
@@ -220,6 +221,7 @@ function clickHandler() {
     }
 }
 
+//2 characters : 4 cards
 var round1_deck = [
     {
         gameName: 'Ana',
@@ -231,7 +233,7 @@ var round1_deck = [
         occupation: 'Bounty Hunter',
         baseOfOperations: 'Cairo, Egypt',
         affiliation: 'Overwatch (formerly)',
-        sound: 'character_sounds/announcer_sound2.mp3',
+        sound: 'character_sounds/announce_attack_obj_e.mp3',
         photo: 'characters/ana.png'
     },
     {
@@ -246,63 +248,12 @@ var round1_deck = [
         affiliation: 'None',
         sound: 'character_sounds/bastion_phrase.mp3',
         photo: 'characters/bastion.png'
-    },
-    {
-        gameName: 'Doomfist',
-        fullName: 'Akande Ogundimu',
-        role: 'Offense',
-        difficulty: 3,
-        abilities: ['Hand Cannon', 'Seismic Slam', 'Rising Uppercut', 'Rocket Punch', 'The Best Defense...', 'Meteor Strike'],
-        age: 45,
-        occupation: 'Mercenary',
-        baseOfOperations: 'Oyo, Nigeria',
-        affiliation: 'Talon',
-        sound: 'character_sounds/announcer_sound2.mp3',
-        photo: 'characters/doomfist.png'
-    },
-    {
-        gameName: 'D.Va',
-        fullName: 'Hana Song',
-        role: 'Tank',
-        difficulty: 3,
-        abilities: ['Fusion Cannons', 'Light Gun', 'Boosters', 'Defense Matrix', 'Self-destruct', 'Call Mech'],
-        age: 19,
-        occupation: 'Pro Gamer (formerly), Mech Pilot',
-        baseOfOperations: 'Busan, South Korea',
-        affiliation: 'Mobile Exo-Force of the Korean Army',
-        sound: 'character_sounds/dva_phrase.mp3',
-        photo: 'characters/dva.png'
     }
 ];
 
+//3 characters : 6 cards
 var round2_deck = [
     {
-        gameName: 'Ana',
-        fullName: 'Ana Amari',
-        role: 'Support',
-        difficulty: 3,
-        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
-        age: 60,
-        occupation: 'Bounty Hunter',
-        baseOfOperations: 'Cairo, Egypt',
-        affiliation: 'Overwatch (formerly)',
-        sound: 'character_sounds/announcer_sound2.mp3',
-        photo: 'characters/ana.png'
-    },
-    {
-        gameName: 'Bastion',
-        fullName: 'SST Laboratories Siege Automaton E54, “Bastion"',
-        role: 'Defense',
-        difficulty: 1,
-        abilities: ['Configuration: Recon', 'Configuration: Sentry', 'Reconfigure', 'Self-repair', 'Configuration: Tank'],
-        age: 30,
-        occupation: 'Battle Automaton',
-        baseOfOperations: 'Unknown',
-        affiliation: 'None',
-        sound: 'character_sounds/bastion_phrase.mp3',
-        photo: 'characters/bastion.png'
-    },
-    {
         gameName: 'Doomfist',
         fullName: 'Akande Ogundimu',
         role: 'Offense',
@@ -312,63 +263,7 @@ var round2_deck = [
         occupation: 'Mercenary',
         baseOfOperations: 'Oyo, Nigeria',
         affiliation: 'Talon',
-        sound: 'character_sounds/announcer_sound2.mp3',
-        photo: 'characters/doomfist.png'
-    },
-    {
-        gameName: 'D.Va',
-        fullName: 'Hana Song',
-        role: 'Tank',
-        difficulty: 3,
-        abilities: ['Fusion Cannons', 'Light Gun', 'Boosters', 'Defense Matrix', 'Self-destruct', 'Call Mech'],
-        age: 19,
-        occupation: 'Pro Gamer (formerly), Mech Pilot',
-        baseOfOperations: 'Busan, South Korea',
-        affiliation: 'Mobile Exo-Force of the Korean Army',
-        sound: 'character_sounds/dva_phrase.mp3',
-        photo: 'characters/dva.png'
-    }
-];
-
-
-var characters = [
-    {
-        gameName: 'Ana',
-        fullName: 'Ana Amari',
-        role: 'Support',
-        difficulty: 3,
-        abilities: ['Biotic Rifle', 'Sleep Dart', 'Biotic Grenade', 'Nano Boost'],
-        age: 60,
-        occupation: 'Bounty Hunter',
-        baseOfOperations: 'Cairo, Egypt',
-        affiliation: 'Overwatch (formerly)',
-        sound: 'character_sounds/announcer_sound2.mp3',
-        photo: 'characters/ana.png'
-    },
-    {
-        gameName: 'Bastion',
-        fullName: 'SST Laboratories Siege Automaton E54, “Bastion"',
-        role: 'Defense',
-        difficulty: 1,
-        abilities: ['Configuration: Recon', 'Configuration: Sentry', 'Reconfigure', 'Self-repair', 'Configuration: Tank'],
-        age: 30,
-        occupation: 'Battle Automaton',
-        baseOfOperations: 'Unknown',
-        affiliation: 'None',
-        sound: 'character_sounds/bastion_phrase.mp3',
-        photo: 'characters/bastion.png'
-    },
-    {
-        gameName: 'Doomfist',
-        fullName: 'Akande Ogundimu',
-        role: 'Offense',
-        difficulty: 3,
-        abilities: ['Hand Cannon', 'Seismic Slam', 'Rising Uppercut', 'Rocket Punch', 'The Best Defense...', 'Meteor Strike'],
-        age: 45,
-        occupation: 'Mercenary',
-        baseOfOperations: 'Oyo, Nigeria',
-        affiliation: 'Talon',
-        sound: 'character_sounds/announcer_sound2.mp3',
+        sound: 'character_sounds/announce_kill_streak.mp3',
         photo: 'characters/doomfist.png'
     },
     {
@@ -396,7 +291,11 @@ var characters = [
         affiliation: 'Shimada Clan (formerly), Overwatch (formerly)',
         sound: 'character_sounds/genji_phrase.mp3',
         photo: 'characters/genji.png'
-    },
+    }
+];
+
+//4 characters : 8 cards
+var round3_deck = [
     {
         gameName: 'Hanzo',
         fullName: 'Hanzo Shimada',
@@ -448,7 +347,11 @@ var characters = [
         affiliation: 'Overwatch (formerly)',
         sound: 'character_sounds/mccree_phrase.mp3',
         photo: 'characters/mccree.png'
-    },
+    }
+];
+
+//5 characters : 10 cards
+var round4_deck = [
     {
         gameName: 'Mei',
         fullName: 'Mei-Ling Zhou',
@@ -485,7 +388,7 @@ var characters = [
         occupation: 'Guardian Robot',
         baseOfOperations: 'Numbani',
         affiliation: 'None',
-        sound: 'character_sounds/announcer_sound1.mp3',
+        sound: 'character_sounds/announce_multi_kill.mp3',
         photo: 'characters/orisa.png'
     },
     {
@@ -513,7 +416,11 @@ var characters = [
         affiliation: 'Unknown',
         sound: 'character_sounds/reaper_phrase.mp3',
         photo: 'characters/reaper.png'
-    },
+    }
+];
+
+//5 characters : 10 cards
+var round5_deck = [
     {
         gameName: 'Reinhardt',
         fullName: 'Reinhardt Wilhelm',
@@ -563,7 +470,7 @@ var characters = [
         occupation: 'Hacker',
         baseOfOperations: 'Dorado, Mexico',
         affiliation: 'Los Muertos (formerly)',
-        sound: 'character_sounds/announcer_sound2.mp3',
+        sound: 'character_sounds/announce_achievement_unlocked.mp3',
         photo: 'characters/sombra.png'
     },
     {
@@ -578,7 +485,11 @@ var characters = [
         affiliation: 'Vishkar Corporation',
         sound: 'character_sounds/symmetra_phrase.mp3',
         photo: 'characters/symmetra.png'
-    },
+    }
+]
+
+//6 characters : 12 cards
+var round6_deck = [
     {
         gameName: 'Torbjörn',
         fullName: 'Torbjörn Lindholm',
@@ -657,4 +568,4 @@ var characters = [
         sound: 'character_sounds/zenyatta_phrase.mp3',
         photo: 'characters/zenyatta.png'
     }
-]
+];
