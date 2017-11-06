@@ -100,9 +100,9 @@ var totalMatchesPerRound = 2;
 match_counter = 0;
 total_matches_counter = 0; //maybe add this, still deciding if I want to
 
-var victory_audio = new Audio();
-var victory_mp3 = 'character_sounds/announce_next_round.mp3';
-    victory_audio.src = victory_mp3;
+var nextRound_audio = new Audio();
+var nextRound_mp3 = 'character_sounds/announce_next_round.mp3';
+nextRound_audio.src = nextRound_mp3;
 var character_audio = new Audio();
 var audio = new Audio(),
 i = 0;
@@ -224,7 +224,7 @@ function clickHandler() {
                             var next_round_button = $('<button>').text('Click for Next Round').attr('id', 'now');
                             $(next_round_div).append(next_round_button)
                             $('#game-rounds-area').append(next_round_div);
-                            victory_audio.play();
+                            nextRound_audio.play();
                             $('#game-area').css('display', 'none');
                         }, 2500);
                     } else {
