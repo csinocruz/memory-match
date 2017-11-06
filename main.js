@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('div.stats-container button').click(resetGame);
     var cube_face = 1;
     var panel = '';
     $('#game-rounds-area').on('click','button',function() {
@@ -99,6 +100,9 @@ var round = 1;
 var totalMatchesPerRound = 2;
 match_counter = 0;
 total_matches_counter = 0; //maybe add this, still deciding if I want to
+attempts = 0;
+accuracy = 0;
+gamesPlayed = 0;
 
 var nextRound_audio = new Audio();
 var nextRound_mp3 = 'character_sounds/announce_next_round.mp3';
@@ -197,10 +201,12 @@ function clickHandler() {
             can_click = false;
             second_card_clicked = $(this);
             character_audio.play();
+            attempts++;
 
             if(first_card_clicked.find('img').attr('src') === second_card_clicked.find('img').attr('src')) {
                 //cards are a match
                 match_counter++;
+                total_matches_counter++;
                 setTimeout(function() {
                     first_card_clicked.remove();  //HELP!!
                     first_card_clicked = null;
@@ -229,6 +235,7 @@ function clickHandler() {
                         }, 2500);
                     } else {
                         console.log('You have won all levels! Reset game to start over.');
+                        $('.card').remove();
                         var group_photo = $('<img>').attr('src', 'images/victory.gif').css('border-radius', '9px');
                         $('#game-area').append(group_photo);
                     }
@@ -251,6 +258,24 @@ function clickHandler() {
             }
         }
     }
+    displayStats();
+}
+
+function displayStats() {
+    $('.attempts .value').text(attempts);
+    accuracy = Math.round(total_matches_counter) / Math.round(attempts);
+    accuracy *= 100;
+    var result = Math.floor(accuracy);
+    if (result > 0.01) {
+        $('.accuracy .value').text(result + '%');
+    }
+}
+
+function resetStats() {
+    accuracy = 0;
+    matches = 0;
+    attempts = 0;
+    displayStats();
 }
 
 function resetGame() {
