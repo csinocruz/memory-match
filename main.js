@@ -266,8 +266,10 @@ function displayStats() {
     accuracy = Math.round(total_matches_counter) / Math.round(attempts);
     accuracy *= 100;
     var result = Math.floor(accuracy);
-    if (result > 0.01) {
+    if (result > 1) {
         $('.accuracy .value').text(result + '%');
+    } else {
+        $('.accuracy .value').text('0');
     }
 }
 
@@ -279,20 +281,17 @@ function resetStats() {
 }
 
 function resetGame() {
-    location.reload();
-    // $('.card').remove();
-    // setBackground();
-    // initializeApp();
-    // $('#cube').removeClass('show-front show-left show-right show-back show-top show-bottom');
-    // cube_face = 0;
-    // panel = '';
-    // can_click = true;
-    // first_card_clicked = null;
-    // second_card_clicked = null;
-    // round = 1;
-    // totalMatchesPerRound = 2;
-    // match_counter = 0;
-    // total_matches_counter = 0;
+    gamesPlayed++;
+    $('.games-played .value').text(gamesPlayed);
+    can_click = true;
+    round = 1;
+    totalMatchesPerRound = 2;
+    match_counter = 0;
+    total_matches_counter = 0;
+    resetStats();
+    $('.card').remove();
+    setBackground();
+    initializeApp();
 }
 
 //2 characters : 4 cards
